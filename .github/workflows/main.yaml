@@ -19,10 +19,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME}}
         password: ${{ secrets.DOCKERHUB_PASS}}
+    - name: Echo name
+      run: echo ${{ secrets.DOCKERHUB_USERNAME}}/random_numbers:${{github.event.release.name}}
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_NAME }}/random_numbers:${{github.event.release.name}}
+        tags: ${{ secrets.DOCKERHUB_USERNAME}}/random_numbers:${{github.event.release.name}}
 
