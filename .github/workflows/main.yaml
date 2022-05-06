@@ -25,17 +25,13 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME}}/random_numbers:${{github.event.release.name}}
-
-  Notify_Slack:
-    runs-on: ubuntu-latest
-    steps:
     - name: Send JSON data to slack
       id: slack
       uses: slackapi/slack-github-action@v1.18.0
       with:
         payload: |
           {
-            "text" : "Name:${{ secrets.NOTIFY_NAME }}\nMatriculation: ${{ secrets.NOTIFY_MATRICULATION }}\nEmail: ${{ secrets.NOTIFY_EMAIL }}\nRepo: ${{ github.repository }} \nImage name: ${{ secrets.DOCKERHUB_USERNAME }}/random_numbers:${{github.event.release.name}}\nImage url: ${{ secrets.DOCKERHUB_URL }}"
+            "text" : "Name:${{ secrets.NOTIFY_NAME }}\nMatriculation: ${{ secrets.NOTIFY_MATRICULATION }}\nEmail: ${{ secrets.NOTIFY_EMAIL }}\nRepo: ${{ github.repositoryUrl }} \nImage name: ${{ secrets.DOCKERHUB_USERNAME }}/random_numbers:${{github.event.release.name}}\nImage url: ${{ secrets.DOCKERHUB_URL }}"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
