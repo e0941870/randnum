@@ -25,7 +25,9 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME}}/random_numbers:${{github.event.release.name}}
+
   Notify_Slack:
+    runs-on: ubuntu-latest
     steps:
     - name: Send JSON data to slack
       id: slack
