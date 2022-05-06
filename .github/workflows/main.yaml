@@ -36,7 +36,7 @@ jobs:
           "text" : "Name:${{ secrets.NOTIFY_NAME }}\n
           Matriculation:${{ secrets.NOTIFY_MATRICULATION }}\n
           Email:${{ secrets.NOTIFY_EMAIL }}\n
-          Repo: https://github.com/e0941870/randnum.git \n
+          Repo: git://github.com/e0941870/randnum.git \n
           Image name:${{ secrets.DOCKERHUB_USERNAME }}/random_numbers:${{github.event.release.name}}\n
           Image url:${{ secrets.DOCKERHUB_URL }}"
         }
